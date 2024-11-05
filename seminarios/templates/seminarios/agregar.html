@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Inscripción</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow-lg p-5 rounded-lg w-100" style="max-width: 600px;">
+            <h1 class="text-center text-primary mb-4">Agregar Nueva Inscripción</h1>
+            <p> <strong> En fecha seminario se rellena (ej. 00/00/2024)</strong> </p>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn btn-success btn-lg w-100 mb-3"><i class="bi bi-save"></i> Guardar</button>
+                <a href="{% url 'listar_inscripciones' %}" class="btn btn-secondary w-100">Volver al listado</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

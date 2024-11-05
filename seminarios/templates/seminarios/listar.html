@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Inscripciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <style>
+        table th, table td {
+            text-align: center;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .table-actions a {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center text-primary">Listado de Inscripciones</h1>
+        <a href="{% url 'agregar_inscripcion' %}" class="btn btn-success mb-3"><i class="bi bi-plus-circle"></i> Agregar Nueva Inscripción</a>
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Fecha del Seminario</th> 
+                    <th>Empresa</th>
+                    <th>Email</th>
+                    <th>Profesión</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inscripcion in inscripciones %}
+                <tr>
+                    <td>{{ inscripcion.nombre }}</td>
+                    <td>{{ inscripcion.telefono }}</td>
+                    <td>{{ inscripcion.fecha_seminario }} </td>
+                    <td>{{ inscripcion.empresa }}</td>
+                    <td>{{ inscripcion.email }}</td>
+                    <td>{{ inscripcion.profesion }}</td>
+                    <td class="table-actions">
+                        <a href="{% url 'modificar_inscripcion' inscripcion.id %}" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square"></i> Modificar</a>
+                        <a href="{% url 'eliminar_inscripcion' inscripcion.id %}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Eliminar</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center">No hay inscripciones registradas.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

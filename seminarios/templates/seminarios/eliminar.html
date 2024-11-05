@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Inscripción</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow-lg p-5 rounded-lg w-100" style="max-width: 600px;">
+            <h1 class="text-center text-danger mb-4">Eliminar Inscripción</h1>
+            <p class="text-center">¿Estás seguro de que deseas eliminar la inscripción de <strong>{{ inscripcion.nombre }}</strong>?</p>
+            <form method="post" class="d-flex justify-content-between">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-lg w-45"><i class="bi bi-trash"></i> Eliminar</button>
+                <a href="{% url 'listar_inscripciones' %}" class="btn btn-secondary btn-lg w-45">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+    
